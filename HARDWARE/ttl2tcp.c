@@ -37,7 +37,7 @@ void tcpcmd()
 	{
 		if((USART_RX_BUF[1]==0x04)&&(USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x00)&&(USART_RX_BUF[4]==0x00)&&(USART_RX_BUF[5]==0x00))
 		{
-			Send2Pc(ack,6);
+			
 			INFORM=1;//闸机开启标志；
 			USART_RX_BUF[5]=0;
 			USART_RX_STA=0;
@@ -45,6 +45,7 @@ void tcpcmd()
 			BEEP=1;
 			delay_ms(1000);
 			BEEP=0;
+			Send2Pc(ack,6);
 		}
 		else if((USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x01))
 		{
@@ -59,15 +60,17 @@ void tcpcmd()
 			XFS_FrameInfo(voice1,(USART_RX_BUF[1]-4));
 			//XFS_FrameInfo(voice1,4);
 			//
+			Send2Pc(ack,6);
 		}
 		else if((USART_RX_BUF[1]==0x04)&&(USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x00)&&(USART_RX_BUF[4]==0x00)&&(USART_RX_BUF[5]==0x01))
 		{
-			Send2Pc(ack,6);
+			
 			INFORM=1;//闸机开启标志；
 			//BEEP=1;
 			//delay_ms(1000);
 			//BEEP=0;
 			USART_RX_BUF[5]=0;
+			Send2Pc(ack,6);
 		}
 		USART_RX_STA=0;//接收标志清零；
 	}

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [..\OBJ\USART.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\USART.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Tue Apr 10 09:17:25 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Apr 11 11:06:04 2018
 <BR><P>
-<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        152 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; tcpcmd &rArr; XFS_FrameInfo
 <P>
@@ -209,7 +209,7 @@ Global Symbols
 <P><STRONG><a name="[c9]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[54]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; tcpcmd &rArr; XFS_FrameInfo
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -233,7 +233,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[55]"></a>main</STRONG> (Thumb, 186 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; tcpcmd &rArr; XFS_FrameInfo
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = main &rArr; tcpcmd &rArr; XFS_FrameInfo
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart3_init
@@ -340,8 +340,8 @@ Global Symbols
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[68]"></a>tcpcmd</STRONG> (Thumb, 246 bytes, Stack size 72 bytes, ttl2tcp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = tcpcmd &rArr; XFS_FrameInfo
+<P><STRONG><a name="[68]"></a>tcpcmd</STRONG> (Thumb, 280 bytes, Stack size 80 bytes, ttl2tcp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = tcpcmd &rArr; XFS_FrameInfo
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;XFS_FrameInfo
@@ -441,7 +441,8 @@ Global Symbols
 <P><STRONG><a name="[cd]"></a>delay_us</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, delay.o(.text), UNUSED)
 
 <P><STRONG><a name="[73]"></a>delay_ms</STRONG> (Thumb, 72 bytes, Stack size 0 bytes, delay.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpcmd
+<BR><BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tcpcmd
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
 </UL>
 
@@ -500,11 +501,12 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[33]"></a>USART2_IRQHandler</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, usart.o(.text))
+<P><STRONG><a name="[33]"></a>USART2_IRQHandler</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, usart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART2_IRQHandler &rArr; USART_GetITStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>

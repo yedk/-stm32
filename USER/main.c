@@ -31,6 +31,8 @@ u8 out;
 char zj_flag1=0;            //闸机定时标志；当zj_flag=1的时候，定时500ms;
 char zj_flag2=0;
 char cardID[12];
+char DG=0;                    //有地感变量；
+
 //char test[10];
 //char voice_code[]={0xBF,0xc6,0xB4,0xF3,0xD1,0xB6,0xB7,0xC9};
 //char voice[]={0xC4,0xE3,0xBA,0xC3};
@@ -81,7 +83,15 @@ int main()
 				{
 				 INFORM=0;
 				}
-				Send2Pc(cardID,10);
+				if(DG==0)
+				Send2Pc(cardID,12);
+				else if(DG==1)
+				{
+					if((sk_coil1)==1)
+					{
+						Send2Pc(cardID,12);
+					}
+				}
 				 //if((sk_coil1)==1)  //刷卡线圈为低电平的时候，上传卡信息。
 				 //{
 				 // cardID[5]=0x01;

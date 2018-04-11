@@ -18,7 +18,7 @@ void Card()
 		cardID[4]=0x00;
 		cardID[3]=0x0B;
 		cardID[2]=0x00;
-		cardID[1]=0x08;
+		cardID[1]=0x0A;
 		cardID[0]=0x00;
 		USART_RX_STA_2=0;
 		INFORM = 2;

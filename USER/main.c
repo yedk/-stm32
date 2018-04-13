@@ -87,21 +87,11 @@ int main()
 				Send2Pc(cardID,12);
 				else if(DG==1)
 				{
-					if((sk_coil1)==1)
+					if((sk_coil1)==0)
 					{
 						Send2Pc(cardID,12);
 					}
 				}
-				 //if((sk_coil1)==1)  //刷卡线圈为低电平的时候，上传卡信息。
-				 //{
-				 // cardID[5]=0x01;
-					//Send2Pc(cardID);
-				 //}
-				//else if((sk_coil2)==1)  //刷卡线圈为低电平的时候，上传卡信息。
-				 //{
-				//cardID[5]=0x02;
-					//Send2Pc(cardID);
-				 //}
 				 break;
 			default:
 				INFORM=0;

@@ -33,3 +33,4 @@
 ..\obj\card.o: ..\SYSTEM\usart\usart.h
 ..\obj\card.o: D:\soft\keil_V5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\card.o: ..\HARDWARE\LED\led.h
+..\obj\card.o: ..\SYSTEM\delay\delay.h

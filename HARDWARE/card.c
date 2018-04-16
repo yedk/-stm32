@@ -7,7 +7,7 @@
 
 void Card()
 {
-	if(USART_RX_STA_2==12)
+	if(USART_RX_STA_2)
 	{
 		//cardID[10]=0x00;
 

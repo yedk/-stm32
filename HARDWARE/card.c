@@ -1,5 +1,8 @@
 #include "card.h"
 #include "delay.h"
+#include "wdg.h"
+#include "coil.h"
+#include "ttl2tcp.h"
 
 
 void Card()
@@ -16,8 +19,6 @@ void Card()
 		cardID[10]=0x01;
 		cardID[9]=USART_RX_BUF2[6];
 		cardID[8]=USART_RX_BUF2[5];
-		//cardID[7]=USART_RX_BUF2[9];
-		//cardID[6]=USART_RX_BUF2[10];
 		cardID[6]=USART_RX_BUF2[2];
 		cardID[7]=USART_RX_BUF2[4];
 		cardID[5]=0x00;
@@ -27,6 +28,14 @@ void Card()
 		cardID[1]=0x0A;
 		cardID[0]=0x00;
 		USART_RX_STA_2=0;
-		INFORM = 2;
+		if(DG==0)
+		Send2Pc(cardID,12);
+		else if(DG==1)
+		{
+			if((sk_coil1)==0)
+			{
+			 Send2Pc(cardID,12);
+			}
+		}
 	}
 }

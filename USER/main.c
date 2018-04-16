@@ -64,39 +64,13 @@ int main()
 		tcpcmd();
 		Card();
 		IWDG_Feed(); //喂狗
-		//Send2Pc(&test[0]);
-		//XFS_FrameInfo(voice,4);
-		//delay_ms(50000);
-		switch(INFORM)
+		if(INFORM==BM_flag)
 		{
-			case BM_flag:
-				if(INFORM==BM_flag)
-				{
-				  INFORM=0;
-				}
-				 zj_flag1=1;
-				 zj_flag2=1;
-				//XFS_FrameInfo(pc_voice);
-				 break;
-			case CARD_flag:
-				if(INFORM==CARD_flag)
-				{
-				 INFORM=0;
-				}
-				if(DG==0)
-				Send2Pc(cardID,12);
-				else if(DG==1)
-				{
-					if((sk_coil1)==0)
-					{
-						Send2Pc(cardID,12);
-					}
-				}
-				 break;
-			default:
-				INFORM=0;
-				break;
+			zj_flag1=1;
+			zj_flag2=1;
 		}
+
+		IWDG_Feed();
 		//判断汽车是否出门。出门则发送闸机已闭合指令。
 		out = KEY_Scan(1);
 		/*if(out==KEY0_PRES)

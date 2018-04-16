@@ -28,12 +28,8 @@ void tcpcmd()
 {
 	char ack[8]={0x00,0x06,0x00,0x0A,0x00,0x00,0x01,0x0f};
 	char ack1[8]={0x00,0x06,0x00,0x0D,0x00,0x00,0x01,0x0f};
-	//char len;
-//	char t=0;
-	//char a =-1;
 	char i=0;
 	char voice1[50];
-//	char *voice_p_temp;
 	if(USART_RX_STA&0x8000)
 	{
 		if((USART_RX_BUF[1]==0x06)&&(USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x00)&&(USART_RX_BUF[4]==0x00)&&(USART_RX_BUF[5]==0x00))
@@ -42,9 +38,8 @@ void tcpcmd()
 			INFORM=1;//闸机开启标志；
 			USART_RX_BUF[5]=0;
 			USART_RX_STA=0;
-			INFORM=1;
 			BEEP=1;
-			delay_ms(1000);
+			delay_ms(500);
 			BEEP=0;
 			Send2Pc(ack1,8);
 		}
@@ -55,21 +50,12 @@ void tcpcmd()
 			{
 				voice1[i]=USART_RX_BUF[(i+6)];
 			}
-			//Send2Pc(&a,1);
-			//Send2Pc(USART_RX_BUF,18);
-			//memcpy(voice1,USART_RX_BUF[6],(USART_RX_BUF[1]-4));
 			XFS_FrameInfo(voice1,(USART_RX_BUF[1]-6));
-			//XFS_FrameInfo(voice1,4);
-			//
 			Send2Pc(ack1,8);
 		}
 		else if((USART_RX_BUF[1]==0x06)&&(USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x02)&&(USART_RX_BUF[4]==0x00))//查询地感状态指令
 		{
 			Send2Pc(ack,8);
-			//INFORM=1;//闸机开启标志；
-			//BEEP=1;
-			//delay_ms(1000);
-			//BEEP=0;
 			if(USART_RX_BUF[5]==0)
 				DG=0;
 			else if(USART_RX_BUF[5]==1)

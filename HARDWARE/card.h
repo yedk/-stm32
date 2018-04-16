@@ -10,6 +10,7 @@ extern u16 USART_RX_STA_2;
 //extern u16 USART_RX_STA_2;
 extern u8 INFORM;
 extern char cardID[12];
+extern char DG;
 
 void Card(void);
 

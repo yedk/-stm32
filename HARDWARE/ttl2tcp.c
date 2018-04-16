@@ -36,8 +36,8 @@ void tcpcmd()
 		{
 			Send2Pc(ack,8);
 			INFORM=1;//闸机开启标志；
-			USART_RX_BUF[5]=0;
-			USART_RX_STA=0;
+			//USART_RX_BUF[5]=0;
+			//USART_RX_STA=0;
 			BEEP=1;
 			delay_ms(500);
 			BEEP=0;

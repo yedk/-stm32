@@ -45,16 +45,19 @@ void tcpcmd()
 		}
 		else if((USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x01))
 		{
+			ack[5]=0x01;
 			Send2Pc(ack,8);
 			for(i=0;i<=(USART_RX_BUF[1]-6);i++)
 			{
 				voice1[i]=USART_RX_BUF[(i+6)];
 			}
 			XFS_FrameInfo(voice1,(USART_RX_BUF[1]-6));
+			ack1[5]=0x01;
 			Send2Pc(ack1,8);
 		}
 		else if((USART_RX_BUF[1]==0x06)&&(USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x02)&&(USART_RX_BUF[4]==0x00))//查询地感状态指令
 		{
+			ack[5]=0x02;
 			Send2Pc(ack,8);
 			if(USART_RX_BUF[5]==0)
 				DG=0;
@@ -62,6 +65,7 @@ void tcpcmd()
 			{
 				DG=1;
 			}
+			ack1[5]=0x02;
 			Send2Pc(ack1,6);
 		}
 		USART_RX_STA=0;//接收标志清零；

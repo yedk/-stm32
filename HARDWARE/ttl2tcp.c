@@ -38,9 +38,6 @@ void tcpcmd()
 			INFORM=1;//闸机开启标志；
 			//USART_RX_BUF[5]=0;
 			//USART_RX_STA=0;
-			BEEP=1;
-			delay_ms(500);
-			BEEP=0;
 			Send2Pc(ack1,8);
 		}
 		else if((USART_RX_BUF[2]==0x00)&&(USART_RX_BUF[3]==0x01))
@@ -61,12 +58,12 @@ void tcpcmd()
 			Send2Pc(ack,8);
 			if(USART_RX_BUF[5]==0)
 				DG=0;
-			else if(USART_RX_BUF[5]==1)
+			if(USART_RX_BUF[5]==0x02)
 			{
 				DG=1;
 			}
 			ack1[5]=0x02;
-			Send2Pc(ack1,6);
+			Send2Pc(ack1,8);
 		}
 		USART_RX_STA=0;//接收标志清零；
 	}

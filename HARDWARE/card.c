@@ -32,7 +32,7 @@ void Card()
 		Send2Pc(cardID,12);
 		else if(DG==1)
 		{
-			if((sk_coil1)==0)
+			if((sk_coil2)==0)
 			{
 			 Send2Pc(cardID,12);
 			}

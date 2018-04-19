@@ -434,11 +434,6 @@
               <FilePath>..\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\KEY\key.c</FilePath>
-            </File>
-            <File>
               <FileName>ttl2tcp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ttl2tcp.c</FilePath>

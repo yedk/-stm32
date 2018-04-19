@@ -37,6 +37,7 @@
 ..\obj\main.o: ..\HARDWARE\ttl2tcp.h
 ..\obj\main.o: ..\HARDWARE\card.h
 ..\obj\main.o: ..\HARDWARE\tim.h
+..\obj\main.o: ..\HARDWARE\exti.h
 ..\obj\main.o: ..\HARDWARE\wdg.h
 ..\obj\main.o: ..\HARDWARE\xfs5152ce.h
 ..\obj\main.o: D:\soft\keil_V5\ARM\ARMCC\Bin\..\include\string.h

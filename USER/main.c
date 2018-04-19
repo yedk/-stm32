@@ -12,7 +12,7 @@
 #include "led.h"
 #include "card.h"
 #include "tim.h"
-//#include "exti.h"
+#include "exti.h"
 #include "wdg.h"
 //#include "voice_synth.h"
 #include "xfs5152ce.h"
@@ -33,10 +33,7 @@ char zj_flag2=0;
 char cardID[12];
 char DG=0;                    //ÓÐµØ¸Ð±äÁ¿£»
 
-//char test[10];
-//char voice_code[]={0xBF,0xc6,0xB4,0xF3,0xD1,0xB6,0xB7,0xC9};
-//char voice[]={0xC4,0xE3,0xBA,0xC3};
-//char voice[]={0xCE,0xD2,0xCA,0xC7,0xBF,0xC6,0xB4,0xF3,0xD1,0xB6,0xB7,0xC9};
+char out1=0;
 char voice[]={0xB6,0xE0,0xB6,0xF8,0xB7,0xD6,0xBF,0xD8,0xD6,0xC6,0xCF,0xB5,0xCD,0xB3,0xC6,0xF4,0xB6,0xAF,0xCD,0xEA,0xB3,0xC9};
 char shutDOWN1[8]={0x00,0x06,0x00,0x0c,0x00,0x00,0x01,0x0f};
 //char shutDOWN2[8]={0x00,0x06,0x00,0x0c,0x00,0x00,0x01,0x0f};
@@ -44,7 +41,7 @@ char shutDOWN1[8]={0x00,0x06,0x00,0x0c,0x00,0x00,0x01,0x0f};
 int main()
 {
 	delay_init();           //ÑÓÊ±³õÊ¼»¯£»
-	KEY_Init();
+	//KEY_Init();
 	break_machine_init();   //Õ¢»ú³õÊ¼»¯£»
 	sk_coil_init();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
@@ -52,8 +49,9 @@ int main()
 	uart2_init(9600);     //´®¿Ú2³õÊ¼»¯£»cardID
 	uart3_init(9600);     //ÓïÒôÄ£¿é´®¿Ú3³õÊ¼»¯
 	LED_BEEP_Init();
-	LED0_Init();          //¼ì²âÑ¹ÏßÄ£¿é³õÊ¼»¯
+	//LED0_Init();          //¼ì²âÑ¹ÏßÄ£¿é³õÊ¼»¯
 	TIM_Init(4999,7199);  //¶¨Ê±Æ÷¶¨Ê±500ms
+	//EXTIX_Init();
 	
 	
 	IWDG_Init(6,625);
@@ -71,13 +69,9 @@ int main()
 		}
 
 		IWDG_Feed();
-		//ÅÐ¶ÏÆû³µÊÇ·ñ³öÃÅ¡£³öÃÅÔò·¢ËÍÕ¢»úÒÑ±ÕºÏÖ¸Áî¡£
-		out = KEY_Scan(1);
-		if(out==KEY0_PRES)
-		{
-			Send2Pc(shutDOWN1,8);
-		}
-		else if(out==KEY1_PRES)
+		//ÅÐ¶ÏÆû³µÊÇ·ñ³öÃÅ¡£³öÃÅÔò·¢ËÍÕ¢»úÒÑ±ÕºÏÖ¸Áî¡
+		out = zj_Scan(0);
+		if(out==1)
 		{
 			Send2Pc(shutDOWN1,8);
 		}

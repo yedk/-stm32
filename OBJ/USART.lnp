@@ -3,7 +3,6 @@
 "..\obj\stm32f10x_it.o"
 "..\obj\system_stm32f10x.o"
 "..\obj\led.o"
-"..\obj\key.o"
 "..\obj\ttl2tcp.o"
 "..\obj\break_machine.o"
 "..\obj\card.o"
